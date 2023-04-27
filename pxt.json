@@ -1,0 +1,15 @@
+{
+    "name": "su03t",
+    "version": "0.0.1",
+    "description": "這是專為micro:bit提供的SU-03T語音辨識積木",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "_locales/zh/su03t-strings.json"
+    ],
+    "public": true
+}
