@@ -9,6 +9,7 @@ namespace su03t {
     let receivedBuff=pins.createBuffer(4)
     let sendBuff=pins.createBuffer(7)
     let mySU03Tevent: Action = null
+    let init=false
     let firstCommandCode=0
     let secondCommandCode=0
  
@@ -193,6 +194,7 @@ namespace su03t {
             BaudRate.BaudRate115200
         )
         basic.pause(100)
+        init=true
     }
     //% weight=90
     //% blockId="su03t_recognize" block="when SU-03T recognizes voice command"
@@ -200,6 +202,8 @@ namespace su03t {
         mySU03Tevent=tempAct;
     }
     basic.forever(() => {
+        if (!init)
+          return;
         receivedBuff = serial.readBuffer(4)
         firstCommandCode = receivedBuff.getNumber(NumberFormat.UInt8LE, 1)
         secondCommandCode = receivedBuff.getNumber(NumberFormat.UInt8LE, 2)
